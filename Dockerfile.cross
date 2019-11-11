@@ -1,0 +1,30 @@
+ARG USER=user
+ARG UID=1000
+ARG GID=1000
+
+FROM debian:buster-slim
+
+RUN groupadd -g $GID $USER && useradd -m -u $UID -g $GID $USER
+
+RUN dpkg --add-architecture armhf
+
+RUN apt-get update && apt-get install -y \
+    --no-install-recommends --no-install-suggests \
+    time \
+    build-essential \
+    crossbuild-essential-armhf \
+    zlib1g-dev:armhf \
+    liblzo2-dev:armhf \
+    liblzma-dev:armhf \
+    libpng-dev:armhf \
+    libfreetype6-dev:armhf \
+    libfontconfig1-dev:armhf \
+    libicu-dev:armhf \
+    libsdl2-dev:armhf \
+    && apt-get clean && apt-get autoremove \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY crossbuild.sh /
+
+USER $USER
+CMD "/crossbuild.sh"
