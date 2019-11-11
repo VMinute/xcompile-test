@@ -23,4 +23,5 @@ RUN apt-get update && apt-get install -y \
 
 COPY build.sh /
 
+USER $USER
 CMD "/build.sh"
