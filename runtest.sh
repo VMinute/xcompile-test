@@ -5,8 +5,6 @@ docker build -t openttd-native-x64 -f Dockerfile.x64 .
 docker build -t openttd-cross-arm32 -f Dockerfile.cross .
 docker build -t openttd-native-arm32 -f Dockerfile.arm32 .
 
-exit
-
 echo "cloning source repo..."
 cd ..
 rm -fr OpenTTD
