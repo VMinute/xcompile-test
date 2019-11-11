@@ -1,8 +1,8 @@
+FROM debian:buster-slim
+
 ARG USER=user
 ARG UID=1000
 ARG GID=1000
-
-FROM debian:buster-slim
 
 RUN groupadd -g $GID $USER && useradd -m -u $UID -g $GID $USER
 

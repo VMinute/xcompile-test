@@ -5,6 +5,11 @@ cd ..
 rm -fr OpenTTD
 git clone https://github.com/OpenTTD/OpenTTD.git
 cd -
+echo "building containers..."
+docker build -t openttd-native-x64 -f Dockerfile.x64 .
+docker build -t openttd-cross-arm32 -f Dockerfile.cross .
+docker build -t openttd-native-arm32 -f Dockerfile.arm32 .
+
 echo "TEST 1 - local native build"
 SECONDS=0
 ./localbuild.sh
