@@ -5,6 +5,7 @@ cd /OpenTTD
 #export CXX=arm-linux-gnueabihf-gcc
 export PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig
 
+make mrproper
 ./configure --host=arm-linux-gnueabihf
 make clean
 make

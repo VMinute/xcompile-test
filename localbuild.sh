@@ -3,6 +3,7 @@
 
 
 cd ../OpenTTD
+make mrproper
 ./configure
 make clean
 make

@@ -15,6 +15,12 @@ echo "TEST 1 - local native build"
 SECONDS=0
 ./localbuild.sh
 echo "local x64 build: $SECONDS" > ./timelog
+
+# cleans up local build folder (paths will be different inside the containers)
+cd ../OpenTTD
+make clean
+make mrproper
+cd -
 echo "TEST 2 - native build in container"
 SECONDS=0
 ./runbuild-x64.sh
